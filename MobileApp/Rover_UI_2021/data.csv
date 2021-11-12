@@ -1,0 +1,3 @@
+Latititude,LatitiudeRef,Longitude,LongitudeRef,Timestamps,Dates,Orientation,PinID,ImageID,GPSCoordinates
+34.040732,North,118.261245,West,15:12:28,2020-10-16,Front,147B197-726,87654A,"N34.040732"
+34.040732,North,118.261245,West,15:12:29,2020-10-16,Back,147B197-726,87655A, "W118.261245"
