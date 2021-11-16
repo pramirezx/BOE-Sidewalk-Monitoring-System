@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Senior Design</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function zoomIn(event) {
+            var element = document.getElementById("overlay");
+            element.style.display = "inline-block";
+            var img = document.getElementById("imgZoom");
+            var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
+            var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
+            element.style.backgroundPosition = (-posX * 6) + "px " + (-posY * 6) + "px";
+
+        }
+
+        function zoomOut() {
+            var element = document.getElementById("overlay");
+            element.style.display = "none";
+        }
+
+        let map;
+        let markers = [];
+
+
+        function initMap() {
+            const myLatLng = { lat: 34.048643, lng: -118.251658 };
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 18,
+                mapId: '5c19d258b6afc97a',
+                center: myLatLng,
+                clickableIcons: false
+            });
+
+            addMarker(myLatLng);
+            addMarker({lat: 34.048753, lng: -118.251775 });
+            addMarker({lat: 34.048720, lng: -118.251830 });
+            addMarker({lat: 34.048647, lng: -118.251906 });
+            addMarker({lat: 34.048523, lng: -118.252030 });
+            addMarker({lat: 34.048803, lng: -118.251864 });
+            addMarker({lat: 34.048810, lng: -118.251751 });
+            addMarker({lat: 34.048911, lng: -118.251664});
+            addMarker({lat: 34.049041, lng: -118.251546});
+            addMarker({lat: 34.049197, lng: -118.251400});
+            addMarker({lat: 34.049366, lng: -118.251243});
+            addMarker({lat: 34.048986, lng: -118.252099});
+            addMarker({lat: 34.049051, lng: -118.252192});
+            addMarker({lat: 34.048455, lng: -118.251316});
+            addMarker({lat: 34.048483, lng: -118.251296});
+            addMarker({lat: 34.048497, lng: -118.251321});
+            addMarker({lat: 34.048487, lng: -118.251369});
+            addMarker({lat: 34.048526, lng: -118.251433});
+            addMarker({lat: 34.0486276, lng: -118.2515114});
+            addMarker({lat: 34.048598, lng: -118.251485});
+            addMarker({lat: 34.048577, lng: -118.251522});
+        }
+        
+        // Adds a marker to the map and push to the array.
+        function addMarker(location) {
+            const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: location.lat + ", " + location.lng
+            });
+            markers.push(marker);
+        }
+
+
+    </script>
+</head>
+<body>
+    <a href="home.html">
+        <img src="https://census.lacity.org/sites/g/files/wph1201/f/styles/generic/public/5.22.19_CITY%20SEAL%20USE.png?itok=_Nsn8aq5" alt="Logo" style="float:left;width:50px;" />
+    </a>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav" id="white">
+                <li id="title">Sidewalk Project</li>
+                <li id="white"><a href="home.html">Home</a></li>
+                <li><a href="render.html" class="active">Render</a></li>
+                <li><a href="database.html">Database</a></li>
+                <li><a href="https://navigatela.lacity.org/navigatela/">NavigateLA</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div id="Software" class="container-fluid text-center">
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+        <div class="row slideanim" id="demo">
+            <div class="col-sm-4">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <h2>Sidewalk Project</h2>
+                        <input type="text" placeholder="Search by Image Name or GPS coords..."><i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <h3>Image Name<i class="fas fa-arrows-alt-h"></i></h3>
+                        <p>Date: (insert from database)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <h3>SLOPE X<i class="fas fa-arrows-alt-h"></i></h3>
+                        <p>(insert from database)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <h3>SLOPE Y<i class="fas fa-arrows-alt-v"></i></h3>
+                        <p>(insert from database)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br />
+
+        <!--middle-->
+        <div class="row slideanim">
+            <div class="col-sm-4">
+
+                <div class="row slideanim">
+                    <div class="col-sm-12">
+                        <div class="card bg-light text-dark">
+                            <div class="card-body">
+                                <h3>Global Positioning System (GPS)</h3>
+                                <p>Latitude: (insert from database) <span>North/South(N/S)</span></p>
+                                <p>Longitude: (insert from database) <span>East/West (E/W)</span></p>
+                                <p>Validity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row slideanim">
+                    <div class="col-sm-12">
+                        <div class="card bg-light text-dark">
+                            <div class="card bg-light text-dark">
+                                <h2>GoPro </h2>
+                                <p>Latitude: (insert from database) <span>North/South(N/S)</span></p>
+                                <p>Longitude: (insert from database) <span>East/West (E/W)</span></p>
+                                <p>Altitude</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="row slideanim">
+                    <div class="col-sm-12">
+                        <div class="card bg-light text-dark">
+                            <div class="card bg-light text-dark">
+                                <div id="map" style="width:100%;height:400px"></div>
+
+                                <script
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVHaj9D4lIpK-xcqY5qhG_81ifJ1yaVP0&callback=initMap&map_ids=5c19d258b6afc97a"
+                                    async
+                                ></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <div id="under">
+                            <a class="thumbnail" href="#thumb">
+                                <img id="imgZoom" style="width:45%" onmousemove="zoomIn(event)" onmouseout="zoomOut()" src="../images/GPFR1867.jpg">
+                                <span><div id="overlay" onmousemove="zoomIn(event)"></div></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+
+            <!--bottom-->
+
+            <!-- <div class="row slideanim">
+                <div class="col-sm-4">
+                    <div class="card bg-light text-dark">
+                        <h2>Options<span onclick="options.html"><i class="fas fa-cog"></i></span></h2>
+                        <p>Time Stamp:(insert from database) </p>
+                        <p>True Course:(insert from database) </p>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card bg-light text-dark">
+                        <div class="card-body">
+                            <button type="button"><i class="fas fa-arrow-left"></i> Prev</button>
+                            <span>               </span>
+                            <button type="button" style="margin:25px;margin-left:200px;margin-right:200px;">Auto </button>
+                            <button type="button">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+
+        <br />
+
+
+        <footer class="page-footer font-small blue pt-4">
+            <div class="container-fluid text-center text-md-left">
+                <div class="row">
+
+                    <div class="col-md-6 mt-md-0 mt-3">
+
+                        <h5 class="text-uppercase"><img src="https://census.lacity.org/sites/g/files/wph1201/f/styles/generic/public/5.22.19_CITY%20SEAL%20USE.png?itok=_Nsn8aq5" alt="Logo" style="float:left;width:100px" /></h5>
+                        <br /><p>200 N Spring St,<br />Los Angeles, CA 90012</p>
+
+                    </div>
+
+                    <div class="col-md-3 mb-md-0 mb-3">
+
+                        <h5 class="text-uppercase">Contact Us</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                Phone: 1-(800) -999-9999
+                            </li>
+                            <li>
+                                Email: random@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 mb-md-0 mb-3">
+                        <h5 class="text-uppercase">Helpful Link</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!">Terms of Use</a>
+                            </li>
+                            <li>
+                                <a href="#!">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#!">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright text-center py-3">
+                Copyright � 2017 All Rights Reserved by Random Company.
+            </div>
+            <br />
+        </footer>
+</body>
+</html>
+<!-- https://www.w3schools.com/graphics/google_maps_intro.asp -->
+<!-- https://developers.google.com/maps/documentation/javascript/overview#Inline -->
