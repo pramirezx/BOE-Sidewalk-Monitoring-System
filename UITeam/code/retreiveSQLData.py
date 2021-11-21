@@ -6,24 +6,10 @@ con = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
                         "Server=engswbotdbserver.database.windows.net;"
                         "Database=SWBot;"
                         "uid=swbotguest; pwd=Soundwave12#$;"
-                        # "Trusted_Connection=yes;"
                     )
-
-# driver_name = ''
-# driver_names = [x for x in pyodbc.drivers() if x.endswith(' for SQL Server')]
-# if driver_names:
-#     driver_name = driver_names[0]
-# if driver_name:
-#     conn_str = 'DRIVER={};'.format(driver_name)
-#     # then continue with ...
-#     # pyodbc.connect(conn_str)
-#     # ... etc.
-# else:
-#     print('(No suitable driver found. Cannot connect.)')
 
 cursor = con.cursor()
 cursor.execute('SELECT * FROM [dbo].[RoverData]')
-# df = pd.read_sql_query('SELECT * FROM [dbo].[RoverData]', con)
 
 for row in cursor:
     rawGPS = row[0]
@@ -38,5 +24,3 @@ for row in cursor:
     pinID = row[9]
     imageURL = row[10]
     print('row = %r' % (row,))
-# print(df)
-# print(type(df))
