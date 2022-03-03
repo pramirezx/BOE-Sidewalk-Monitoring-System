@@ -7,7 +7,7 @@ import io
 
 # Get Azure Blob Server Information
 block_blob_service = BlockBlobService(account_name='swbotblob', sas_token='sv=2019-10-10&si=csulaswproject-17C19A6298B&sr=c&sig=xZ2soDIU1tHpJVeQVKnAYykG32Sggh3C5xNTnv1%2FB6Y%3D')
-generator = block_blob_service.list_blobs('csulaswproject', 'images')
+generator = block_blob_service.list_blobs('csulaswproject', 'images_1_31')
 
 # Convert exif data to degree
 def toDegree(data):
@@ -16,9 +16,9 @@ def toDegree(data):
         return float(l[0]) + (1/60)*float(l[1]) + (float(s[0])/float(s[1]))*(1/(60*60))
 
 # Open or create csv file
-f = open('./data/GoProMetadata.csv', 'w', encoding='UTF8', newline='')
+f = open('./data/GoProMetadata2-24.csv', 'w', encoding='UTF8', newline='')
 
-# Create a wirter to write onto the csv file
+# Create a writer to write onto the csv file
 writer = csv.writer(f)
 
 # Write the header onto the csv file
