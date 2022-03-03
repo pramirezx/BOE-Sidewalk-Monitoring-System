@@ -35,4 +35,4 @@ for row in cursor:
     slope_y = row[7]
     record_file = row[8]
     srid = row[9]
-    # print('row = %r' % (row,))
+    print('row = %r' % (row,))
