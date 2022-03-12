@@ -16,7 +16,7 @@ def toDegree(data):
         return float(l[0]) + (1/60)*float(l[1]) + (float(s[0])/float(s[1]))*(1/(60*60))
 
 # Open or create csv file
-f = open('./data/GoProMetadata2-24.csv', 'w', encoding='UTF8', newline='')
+f = open('C:/Users/perla/Documents/GitHub/BOE-Sidewalk-Monitoring-System/UITeam/code/data/GoProMetadata3-1.csv', 'w', encoding='UTF8', newline='')
 
 # Create a writer to write onto the csv file
 writer = csv.writer(f)
