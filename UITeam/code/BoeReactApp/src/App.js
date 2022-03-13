@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Database from './components/Database'
 import Render from './components/Render'
 import About from './components/About'
+import NavigateLA from './components/NavigateLA'
 
 import './App.css';
 import "./style.css";
@@ -33,6 +34,7 @@ class App extends Component {
                     <Route exact path='/database' element={ <Database/> } />
                     <Route exact path='/render' element={ <Render data={ this.state.data } /> } />
                     <Route exact path='/about' element={ <About/> } />
+                    <Route exact path='/navigatela' element={ <NavigateLA /> } />
                 </Routes>
             </Router>
 

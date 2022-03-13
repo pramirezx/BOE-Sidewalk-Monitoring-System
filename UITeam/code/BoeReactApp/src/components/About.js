@@ -22,7 +22,7 @@ function About() {
                         <li id="white"><Link to="/">Home</Link></li>
                         <li><Link to="/render">Render</Link></li>
                         <li><Link to="/database">Database</Link></li>
-                        <li><a href="https://navigatela.lacity.org/navigatela/" target="_blank" rel="noopener noreferrer">NavigateLA</a></li>
+                        <li><Link to="/navigatela">NavigateLA</Link></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><Link to="/about" class="active">About</Link></li>

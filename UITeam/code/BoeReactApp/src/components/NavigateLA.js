@@ -1,9 +1,42 @@
-import React from "react";
-import { Link } from 'react-router-dom'
+import React, {useState,useEffect} from 'react';
+import { Link } from 'react-router-dom';
+import AsyncCSV from './AsyncCSV';
+//import axios from 'axios';
+//import * as dfd from "danfojs";
+//import * as dfd from "danfojs";
+//import * as dfd from "danfojs-node"
+//const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-import DWGFile from "./images/web/DWGFile.png"
 
-function Database() {
+const NavigateLA = () => {
+
+    const [date , setDate] = useState("");
+    const [data,setData] = useState("")
+    const [noResults, setNoResults] = useState(false);
+    const [gps, setGps] = useState();
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [trigger, setTrigger] = useState(false);
+
+
+
+    let onChange = (event) => {
+        const newValue = event.target.value;
+        setDate(newValue);
+    }
+
+
+    // useEffect(() => {
+
+    //     if (date.length == 10){
+    //         setIsFormValid(true);
+    //     }
+    //     else {
+    //         setIsFormValid(false);
+    //     }
+
+    // },[date]);
+    
+
     return (
         <div>
             <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar">
@@ -12,44 +45,40 @@ function Database() {
                         <li id="title">Sidewalk Project</li>
                         <li id="white"><Link to="/">Home</Link></li>
                         <li><Link to="/render">Render</Link></li>
-                        <li><Link to="/database" class="active">Database</Link></li>
-                        <li><Link to="/navigatela">NavigateLA</Link></li>
+                        <li><Link to="/database">Database</Link></li>
+                        <li><Link to="/navigatela" class="active">NavigateLA</Link></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><Link to="/about">About</Link></li>
                     </ul>
                 </div>
             </nav>
+            <div id="Software" class="container-fluid text-center">
+                <br />
+                <br />
+                <br />
+                <br />
 
+                {/* <div>
+                    <input placeholder={date} onChange={onChange}/>
+                    <button onClick={getSidewalkData} disabled={!isFormValid}>package</button> 
+                </div> */}
 
-            <br />
-            <br />
-            <br />
-
-            <div id="about" class="container-fluid">
-                <h1 style={{"text-align":"center","font-size":"80px"}}>DWG File</h1>
-                <div class="row">
+                <div class="row slideanim" id="demo">
                     <div class="col-sm-4">
-                        <span><img src={ DWGFile } alt="LA Skyline" style={{width:"100%"}} /></span>
-                    </div>
-                    <br/>
-                    <p>
-                        Currently, BOE use a mapping application that they developed alongside the Department of Public Works and
-                        the Mapping and Land Records Division. This mapping application, called NavigateLA, visualizes data from reports
-                        produced by the the city, county, and other associated agencies. Data is broken down into layers. Users can select
-                        the layers they'd like to see or even load their own layers.
-                        Ideally, sidewalk data would be added as a layer on NavigateLA so that BOE can visualize their data in one location.
-                        Using AutoCAD, we can automate the creation of the AutoCAD files that can then be hosted and visualized on NavigateLA.
-                        The two criteria we will focus on are cross slope and running slope and their severity indices are identified by their 
-                        color. In the DWG file on the right, we've shown an example of how we can visualize part of the slope-data.
-                    </p>
-                    <a href="about.html" style={{"font-size":"24px","position":"absolute","right":"30px"}}>Download(to be implmented)</a>
+                        <div class="card bg-light text-dark">
+                            <div class="card-body">
+                                <h2>NavigateLA Data</h2>
+                                <input type="text" placeholder='Enter Date (e.g. 2022-02-24)' onChange={onChange} />
+                                <AsyncCSV date={date} />
+                            </div>
+                        </div>
+                    </div>     
                 </div>
-
             </div>
+            <br />
+            <br />
 
-            <br/>
-            <br/>
             <footer class="page-footer font-small blue pt-4">
                 <div class="container-fluid text-center text-md-left">
                     <div class="row">
@@ -93,7 +122,7 @@ function Database() {
                     </div>
                 </div>
                 <div class="footer-copyright text-center py-3">
-                    Copyright � 2017 All Rights Reserved by Random Company.
+                    Copyright � 2022 All Rights Reserved by Random Company.
                 </div>
             </footer>
         </div>
@@ -101,4 +130,10 @@ function Database() {
     );
 }
 
-export default Database;
+// const styles = StyleSheet.create({
+
+    
+// });
+
+
+export default NavigateLA;

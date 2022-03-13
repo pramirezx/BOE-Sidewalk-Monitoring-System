@@ -18,7 +18,7 @@ function Render(props) {
                         <li id="white"><Link to="/">Home</Link></li>
                         <li><Link to="/render" class="active">Render</Link></li>
                         <li><Link to="/database">Database</Link></li>
-                        <li><a href="https://navigatela.lacity.org/navigatela/" target="_blank" rel="noopener noreferrer">NavigateLA</a></li>
+                        <li><Link to="/navigatela">NavigateLA</Link></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="about.html">About</a></li>

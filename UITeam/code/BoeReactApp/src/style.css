@@ -90,15 +90,17 @@ input[type=text] {
 }
 
 button {
-    background-color: #518fff;
+    background-color: #211aa0;
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 32px;
+    font-size: 60px;
     border-radius: 12px;
+    width: 150px;
+    height: 50px;
 }
 
 .footer {
