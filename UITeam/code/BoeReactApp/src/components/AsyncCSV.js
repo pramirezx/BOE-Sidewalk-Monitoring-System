@@ -1,17 +1,14 @@
 import React, { Component, useState,useEffect } from "react";
 import { CSVLink } from "react-csv";
 
-class AsyncCSV extends Component {
-    
-    constructor(props){
-        super(props);
-        this.state = {
-            data: [],
-            loading: false,
-            date: ""
-        }
-        this.csvLinkEl = React.createRef();
-        this.headers = [
+//accepts props from navla page
+const AsyncCSV = (props) => {
+    const now = new Date();
+    const [data,setData] = useState();
+    const [loading, setLoading] = useState();
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [date, setDate] = useState('2022-02-24');
+    const headers = [
             {label: 'INPUT_SW_ID', key: 'INPUT_SW_ID'},
             {label: 'LATITUDE', key: 'LATITUDE'},
             {label:'LONGITUDE', key: 'LONGITUDE'},
@@ -23,51 +20,71 @@ class AsyncCSV extends Component {
             {label: 'X_AXIS_TEMP', key: 'X_AXIS_TEMP'},
             {label: 'Y_AXIS_TEMP', key: 'Y_AXIS_TEMP'},
             {label: 'SPEED', key: 'SPEED'}
-        ]
-    }
+    ];
+    const csvLink = React.useRef();
+    const [check, setCheck] = useState(false);
 
-    getGpsList = () => {
-        //'http://143.198.157.93:3857/rover/where?INPUT_SW_ID=1234&LIMIT=1430'
+    //function that handles request
+     const getGpsList = () => {
+         //'http://143.198.157.93:3857/rover/where?INPUT_SW_ID=1234&LIMIT=1430'
         //'http://143.198.157.93:3857/rover/where?DATE=2022-02-24'
-        return fetch('http://143.198.157.93:3857/rover/where?DATE=' + this.props.date).then(res => res.json());
+        return fetch('http://143.198.157.93:3857/rover/where?DATE=2022-02-24' + props.date).then(res => res.json());       
     }
+    
+    //function that requests and saves the data also activating the csvlink to be downloaded
+    const downloadGPS = async () => {
+        setLoading(true);
 
-    downloadGPS = async () => {
-        
-        this.setState({ loading: true});
-
-
-        const data = await this.getGpsList();
+        const data = await getGpsList();
         //console.log(data)
-        this.setState({ data: data, loading: false }, () => {
-            setTimeout(() => {
-                this.csvLinkEl.current.link.click();
-            }
-            );
-            
-        });
+        setData(data);
+        setLoading(false);
+        setCheck(true);
+        setTimeout(() => {
+            csvLink.current.link.click();
+            setCheck(false);
+          });
         
     }
 
-    render() {
-        const {data, loading} = this.state;
-        return <div>
+    useEffect(() => {
+        //validates date to be correct
+        if (props.date.length == 10 && parseInt(props.date.substring(0,4)) > 2000 && 
+            parseInt(props.date.substring(0,4)) <= now.getFullYear() &&
+            parseInt(props.date.substring(5,7)) >= 1 &&
+            parseInt(props.date.substring(5,7)) <= 12 &&
+            parseInt(props.date.substring(8,10)) >= 1 &&
+            parseInt(props.date.substring(8,10)) <= 31
+            ){
+            setIsFormValid(true);
+        }
+        else {
+            setIsFormValid(false);
+        }
 
+    },[props.date]);
+
+    return (
+        <div>
             <button
                 type="button" class="btn btn-secondary col-6"
-                onClick={this.downloadGPS}
-                disabled={loading}
-                >
-                 {loading? "Packaging..." : "Package" }
-                </button>
-            <CSVLink 
-                headers={this.headers}
+                 onClick={downloadGPS}
+                 disabled={!isFormValid}
+                 >
+                {loading? "Packaging..." : "Package" }
+                 </button>
+            {check ?
+                <CSVLink 
+                headers={headers}
                 data={data}
-                filename={this.props.date +".csv"}
-                ref={this.csvLinkEl}
-            />
-        </div>
-    }
+                filename={props.date +".csv"}
+                ref={csvLink}
+                />
+            : undefined }
+             
+         </div>
+    );
+
 }
 
 export default AsyncCSV;

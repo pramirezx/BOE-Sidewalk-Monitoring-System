@@ -7,20 +7,12 @@ import AsyncCSV from './AsyncCSV';
 const NavigateLA = () => {
 
     const [date , setDate] = useState("");
-    const [data,setData] = useState("")
-    const [noResults, setNoResults] = useState(false);
-    const [gps, setGps] = useState();
-    const [isFormValid, setIsFormValid] = useState(false);
-    const [trigger, setTrigger] = useState(false);
-
 
 
     let onChange = (event) => {
         const newValue = event.target.value;
         setDate(newValue);
     }
-
-    
 
     return (
         <div>
@@ -43,11 +35,6 @@ const NavigateLA = () => {
                 <br />
                 <br />
                 <br />
-
-                {/* <div>
-                    <input placeholder={date} onChange={onChange}/>
-                    <button onClick={getSidewalkData} disabled={!isFormValid}>package</button> 
-                </div> */}
 
                 <div class="row slideanim" id="demo">
                     <div class="col-sm-4">
