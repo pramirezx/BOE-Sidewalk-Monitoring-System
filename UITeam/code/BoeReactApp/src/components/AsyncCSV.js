@@ -58,7 +58,7 @@ class AsyncCSV extends Component {
                 onClick={this.downloadGPS}
                 disabled={loading}
                 >
-                  Package{/* {loading? "Packaging..." : "Package" }   */}
+                 {loading? "Packaging..." : "Package" }
                 </button>
             <CSVLink 
                 headers={this.headers}
@@ -66,7 +66,6 @@ class AsyncCSV extends Component {
                 filename={this.props.date +".csv"}
                 ref={this.csvLinkEl}
             />
-            {this.props.date}
         </div>
     }
 }

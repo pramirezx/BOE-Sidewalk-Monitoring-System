@@ -1,11 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import AsyncCSV from './AsyncCSV';
-//import axios from 'axios';
-//import * as dfd from "danfojs";
-//import * as dfd from "danfojs";
-//import * as dfd from "danfojs-node"
-//const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+
 
 
 const NavigateLA = () => {
@@ -24,17 +20,6 @@ const NavigateLA = () => {
         setDate(newValue);
     }
 
-
-    // useEffect(() => {
-
-    //     if (date.length == 10){
-    //         setIsFormValid(true);
-    //     }
-    //     else {
-    //         setIsFormValid(false);
-    //     }
-
-    // },[date]);
     
 
     return (
