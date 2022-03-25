@@ -49,7 +49,7 @@ const AsyncCSV = (props) => {
 
     useEffect(() => {
         //validates date to be correct
-        if (props.date.length == 10 && parseInt(props.date.substring(0,4)) > 2000 && 
+        if (props.date.length === 10 && parseInt(props.date.substring(0,4)) > 2000 && 
             parseInt(props.date.substring(0,4)) <= now.getFullYear() &&
             parseInt(props.date.substring(5,7)) >= 1 &&
             parseInt(props.date.substring(5,7)) <= 12 &&

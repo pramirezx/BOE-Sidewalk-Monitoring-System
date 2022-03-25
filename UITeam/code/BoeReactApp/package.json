@@ -15,7 +15,7 @@
     "react-head": "^3.4.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^5.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
