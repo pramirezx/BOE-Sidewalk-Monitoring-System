@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 //to prevent bad actors from acting.
 app.use(cors({ credentials: true, origin: "*" }));
 
+// Deprecated route. Use /db/query
 app.get("/rover/where", async (req, res) => {
   const { query } = req;
   let pool = await dbConnect();
@@ -34,6 +35,7 @@ app.get("/rover/where", async (req, res) => {
   res.send(data);
 });
 
+// Deprecated route. Use /db/query
 app.get("/sidewalk/where", async (req, res) => {
   const { query } = req;
 
@@ -52,6 +54,9 @@ app.get("/sidewalk/where", async (req, res) => {
   res.send(data);
 });
 
+// Route will return JSON object containing row(s)
+// of data from sdwk.sidewalk_wm table that contains
+// sidewalk(s) closest to the given coordinate
 app.get("/find/sidewalk", async (req, res) => {
   const { query } = req;
   let lon = query?.lon || 0;
@@ -76,7 +81,7 @@ app.get("/find/sidewalk", async (req, res) => {
   let data = await findClosestSdwk(ctx, params);
   res.send(data);
 });
-
+// Deprecated route. Use /db/query
 app.get("/gpmeta/where", async (req, res) => {
   const { query } = req;
 
@@ -98,6 +103,17 @@ app.get("/gpmeta/where", async (req, res) => {
 // Experimental endpoint but should be end goal
 // for handling standard data requests.
 app.get("/test/query", async (req, res) => {
+  const { query } = req;
+  let pool = await dbConnect();
+  let ctx = {
+    sql: pool,
+  };
+  let data = await queryTester(ctx, queryParser(query));
+  res.send(data);
+});
+
+// Route to replace /test/query route
+app.get("/db/query", async (req, res) => {
   const { query } = req;
   let pool = await dbConnect();
   let ctx = {
