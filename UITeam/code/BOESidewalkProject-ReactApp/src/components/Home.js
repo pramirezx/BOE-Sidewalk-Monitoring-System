@@ -80,38 +80,44 @@ function Home() {
 
                         <div class="col-md-6 mt-md-0 mt-3">
 
-                            <h5 class="text-uppercase"></h5>
-                            <br /><p><br /></p>
+                            <h5 class="text-uppercase"><img src="https://engpermitmanual.lacity.org/profiles/boe/themes/custom/boe_la/images/brand.png" alt="Logo" style={{"float":"left","width":"100px"}} /></h5>
+                            <br /><p>5151 State University Dr,<br />Los Angeles, CA 90032</p>
 
                         </div>
 
                         <div class="col-md-3 mb-md-0 mb-3">
 
-                            <h5 class="text-uppercase"></h5>
+                            <h5 class="text-uppercase">Contact Us</h5>
 
                             <ul class="list-unstyled">
                                 <li>
+                                    Phone: 1-(800) -999-9999
                                 </li>
                                 <li>
+                                    Email: random@gmail.com
                                 </li>
                             </ul>
                         </div>
 
                         <div class="col-md-3 mb-md-0 mb-3">
-                            <h5 class="text-uppercase"></h5>
+                            <h5 class="text-uppercase">Helpful Link</h5>
 
                             <ul class="list-unstyled">
                                 <li>
+                                    <a href="#!">Terms of Use</a>
                                 </li>
                                 <li>
+                                    <a href="#!">Privacy Policy</a>
                                 </li>
                                 <li>
+                                    <a href="#!">FAQ</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="footer-copyright text-center py-3">
+                    Copyright � 2022 All Rights Reserved by Random Company.
                 </div>
             </footer>
         </div>
