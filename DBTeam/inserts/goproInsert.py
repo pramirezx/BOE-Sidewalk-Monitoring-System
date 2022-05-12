@@ -13,10 +13,8 @@ driver= '{ODBC Driver 17 for SQL Server}'
 #convert gps from epsg 4326 to epsg 3857
 #input coords in decimal degrees
 def convertGPS(lon, lat):
-    lon4326 = lon
-    lat4326 = lat
-    lon3857 = (lon4326 * 20037508.34 / 180)
-    lat3857 = (math.log(math.tan((90 + lat4326) * math.pi / 360)) / (math.pi / 180)) * (20037508.34 / 180)
+    lon3857 = (lon * 20037508.34 / 180)
+    lat3857 = (math.log(math.tan((90 + lat) * math.pi / 360)) / (math.pi / 180)) * (20037508.34 / 180)
     return lon3857, lat3857
 
 #convert date and time from metadata to smalldatetime for db
