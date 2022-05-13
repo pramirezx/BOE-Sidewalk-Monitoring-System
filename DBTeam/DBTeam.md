@@ -3,7 +3,6 @@ Running `index.js` should start the server. It is advise to configure using some
 Edit the database access configuration in the `example.env` file and rename the file to `.env` to run.
 
 -----------------------------------------------------------------------------------------------------------------------------
-DB Inserts
 GoPro Camera Data Upload: have the python script in the same folder as the GoPro metadata CSV files in order to run the script to upload to DB
 GoPro CSV column headers are as follows: image_name,	date,	time,	latitude,	latref,	longitude,	lonref,	lat_degrees,	lat_minutes,	lat_seconds,	lon_degrees,	lon_minutes,	lon_seconds
 Rover Data Upload: similar to the above script, have it in the folder containing the rover data CSV files in order to run to upload to DB
