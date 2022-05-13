@@ -1,4 +1,4 @@
-## Web UI Team ##
+# Web UI Team #
 
 UI Team's main task is to be able to develop an interactive user-friendly UI that is able to display specific or individual sidewalk segment images and its slope data. 
 
