@@ -8,6 +8,18 @@ To run the React App:
 3. Run the command: **npm install**
 4. Then run the command: **npm start**
 
+The following dependencies must be installed too using the "npm install ..." commamd
+"@azure/storage-blob": "^12.9.0",
+"axios": "^0.26.0",
+"google-maps-react": "^2.0.6",
+"react": "^17.0.2",
+"react-csv": "^2.2.2",
+"react-dom": "^17.0.2",
+"react-icons": "^4.3.1",
+"react-photosphere": "^1.0.2",
+"react-router-dom": "^6.2.1",
+"react-scripts": "5.0.0"
+
 To extract data from GoPro images: 
 1. Use the exifDataExtract.py file 
     
