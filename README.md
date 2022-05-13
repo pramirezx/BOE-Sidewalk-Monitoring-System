@@ -17,3 +17,4 @@ Rover Data column headers are as follows: Sidewalk ID,	NMEA Info,	UTC,	Position 
 
 Rover data will generate many CSV files, if needed these files can be combined into one as the data upload is manual for each CSV file:
 In cmd navigate to the directory with all the generate CSV files. Then run the following command: copy *.csv <new_csv_name>.csv
+-----------------------------------------------------------------------------------------------------------------------------------------------
