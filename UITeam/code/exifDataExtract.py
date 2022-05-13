@@ -6,7 +6,7 @@ import csv
 import io
 
 # Get Azure Blob Server Information
-block_blob_service = BlockBlobService(account_name='swbotblob', sas_token='sv=2019-10-10&si=csulaswproject-17C19A6298B&sr=c&sig=xZ2soDIU1tHpJVeQVKnAYykG32Sggh3C5xNTnv1%2FB6Y%3D')
+block_blob_service = BlockBlobService(account_name='swbotblob', sas_token='input SAS key token here')
 generator = block_blob_service.list_blobs('csulaswproject', 'images_3_1')
 
 # Convert exif data to degree
