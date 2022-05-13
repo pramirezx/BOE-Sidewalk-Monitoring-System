@@ -20,6 +20,8 @@ The following dependencies must be installed too using the "npm install ..." com
 "react-router-dom": "^6.2.1",
 "react-scripts": "5.0.0"
 
+5. Replace the "apiKey:" in line 82 of the MapContainer.js file with a usable Google Maps API key.
+
 To extract data from GoPro images: 
 1. Use the exifDataExtract.py file 
     
