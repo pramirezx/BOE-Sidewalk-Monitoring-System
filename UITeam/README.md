@@ -6,8 +6,6 @@ To run the React App:
 1. Run a new terminal
 2. Go to BOESidewalkProject-ReactApp directory
 3. Run the command: **npm install**
-4. Replace the "apiKey:" in line 82 of the MapContainer.js file with a usable Google Maps API key.
-5. Then run the command: **npm start**
 
 The following dependencies must be installed too using the "npm install ..." commamd
 "@azure/storage-blob": "^12.9.0",
@@ -20,6 +18,9 @@ The following dependencies must be installed too using the "npm install ..." com
 "react-photosphere": "^1.0.2",
 "react-router-dom": "^6.2.1",
 "react-scripts": "5.0.0"
+
+4. Replace the "apiKey:" in line 82 of the MapContainer.js file with a usable Google Maps API key.
+5. Then run the command: **npm start**
 
 To extract data from GoPro images: 
 1. Use the exifDataExtract.py file 
