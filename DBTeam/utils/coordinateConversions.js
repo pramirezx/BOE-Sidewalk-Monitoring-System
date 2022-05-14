@@ -19,6 +19,7 @@ export const xyToLngLat = (x = 0, y = 0) => {
   return [lon, lat];
 };
 
+// Converts SR 4326 to SR 3857
 export const lngLatToXY = (lng = 0, lat = 0) => {
   let x = 0.017453292519943 * lng * EARTH_RADIUS;
   let y = lat * 0.017453292519943;

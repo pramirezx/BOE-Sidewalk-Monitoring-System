@@ -7,12 +7,17 @@ import { roverDataquery } from "./db/roverDataQuery.js";
 import { gpmeta } from "./db/gpmeta.js";
 import { queryTester } from "./db/queryTester.js";
 import { queryParser } from "./utils/queryParser.js";
+import { convertQuery } from "./db/convertQuery.js";
+
+// You need to install this library first
+import multer from "multer";
+import { uploadCSV } from "./db/uploadCSV.js";
 
 const DEFAULT_SRID = 3857;
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 //Exposes cors. Highly recommended to designate specific IP/URL
 //to prevent bad actors from acting.
 app.use(cors({ credentials: true, origin: "*" }));
@@ -111,7 +116,12 @@ app.get("/test/query", async (req, res) => {
   let data = await queryTester(ctx, queryParser(query));
   res.send(data);
 });
-
+// Route convert coordinates
+app.post("/convert/coordinates", async (req, res) => {
+  console.log("The request body", req.body);
+  let data = await convertQuery(req.body);
+  res.send(data);
+});
 // Route to replace /test/query route
 app.get("/db/query", async (req, res) => {
   const { query } = req;
@@ -121,6 +131,25 @@ app.get("/db/query", async (req, res) => {
   };
   let data = await queryTester(ctx, queryParser(query));
   res.send(data);
+});
+
+// Yea, this works on a single file. It is advise to rebuild this whole feature.
+const storage = multer.diskStorage({
+  destination: "/temp/",
+  filename: "rover_csv.csv",
+});
+// Make sure the folder is created before use
+const uploadDest = multer({ dest: "/temp/", storage: storage });
+app.post("/upload/csv", uploadDest.single("rover_csv"), async (req, res) => {
+  const { query } = req;
+
+  // Doesn't really need db access if python has access
+  let pool = await dbConnect();
+  let ctx = {
+    sql: pool,
+  };
+  let data = await uploadCSV(ctx, { ...query });
+  res.send({ ...data });
 });
 
 app.listen(process.env.PORT, () => {

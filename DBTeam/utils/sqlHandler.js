@@ -100,7 +100,7 @@ export const sqlHandler = (p) => {
   }
 
   // The compilation of the entire SQL statement.
-  const query = `SELECT ${topStr}${attributes} FROM ${params?.table.join(
+  const query = `SELECT ${attributes} FROM ${params?.table.join(
     ", "
   )} ${whereStr} ${limitStr}`;
 
