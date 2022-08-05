@@ -45,10 +45,10 @@ To run the React App:
 5. Then run the command: **npm start**
 
 To extract data from GoPro images: 
-1. Use the exifDataExtract.py file 
-2. In line 9, add the SAS token key
-3. In line 10, replace the 'images_3_1' with the preferred image folder from blob storage
-4. In line 19, choose the destination you want the csv file to be in or create the csv file
+1. Use the exifDataExtract.py file. 
+2. In line 9, add the SAS token key.
+3. In line 10, replace the 'images_3_1' with the preferred image folder from blob storage.
+4. In line 19, choose the destination you want the csv file to be in or create the csv file.
     
 To extract data from SQL database:
 1. Use the retreiveSQLData.py file
